@@ -22,3 +22,5 @@ a = rand(3)
 @test value(Parameter(a)) == a
 @test value(Constant(a)) == a
 ```
+
+With the help of `Functors.jl`, we can also flat a `Parameter`/`Constant` type into a named tuple, `functor` method also return a reconstruct method that is able to map the resulting named tuple back to original parameter type. In this way, `ConstainedParameter.jl` is compatible with `Flux.jl`, you just need to substitute the original bare array with `Parameter` type, and `params` will collect all the parameters for you automatically.
